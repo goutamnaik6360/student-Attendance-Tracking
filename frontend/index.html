@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Smart Attendance Management System</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="app-shell">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+
+            <div class="logo">
+                <span class="logo-mark">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                        <path d="M9 12.5L11 14.5L15.5 9.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="12" cy="12" r="9.5" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                </span>
+                <span>Smart Attendance</span>
+            </div>
+
+            <nav class="nav-links">
+
+                <a href="#dashboard" class="active">
+                    <svg viewBox="0 0 24 24" fill="none"><path d="M4 13h6V4H4v9Zm0 7h6v-5H4v5Zm10 0h6V11h-6v9Zm0-16v5h6V4h-6Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+                    <span>Dashboard</span>
+                </a>
+
+                <a href="#students">
+                    <svg viewBox="0 0 24 24" fill="none"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" stroke="currentColor" stroke-width="1.7"/><path d="M4 20c0-3.3 3.6-6 8-6s8 2.7 8 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+                    <span>Students</span>
+                </a>
+
+                <a href="#attendance">
+                    <svg viewBox="0 0 24 24" fill="none"><rect x="4" y="5" width="16" height="15" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M8 3v4M16 3v4M4 10h16" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M8.5 14.5l2 2 4-4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    <span>Attendance</span>
+                </a>
+
+                <a href="#reports">
+                    <svg viewBox="0 0 24 24" fill="none"><path d="M5 20V10M12 20V4M19 20v-7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+                    <span>Reports</span>
+                </a>
+
+            </nav>
+
+        </aside>
+
+        <div class="main-area">
+
+            <!-- TOPBAR -->
+            <header class="topbar">
+                <div class="topbar-title">
+                    <h2 id="topbarTitle">Dashboard</h2>
+                </div>
+                <div class="topbar-meta">
+                    <span id="topbarDate"></span>
+                </div>
+            </header>
+
+            <!-- MAIN -->
+            <main>
+
+        <!-- DASHBOARD -->
+        <section id="dashboard" class="section">
+
+            <div class="page-title">
+
+                <div>
+                    <h1>Attendance Dashboard</h1>
+
+                    <p>
+                        Manage student attendance digitally
+                    </p>
+                </div>
+
+            </div>
+
+
+            <!-- STAT CARDS -->
+            <div class="stats-grid">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon blue">
+                        👨‍🎓
+                    </div>
+
+                    <div>
+                        <p>Total Students</p>
+                        <h2 id="totalStudents">0</h2>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon green">
+                        ✓
+                    </div>
+
+                    <div>
+                        <p>Present Today</p>
+                        <h2 id="presentToday">0</h2>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon red">
+                        ✕
+                    </div>
+
+                    <div>
+                        <p>Absent Today</p>
+                        <h2 id="absentToday">0</h2>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon purple">
+                        %
+                    </div>
+
+                    <div>
+                        <p>Attendance Rate</p>
+                        <h2 id="attendanceRate">0%</h2>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- QUICK ACTIONS -->
+            <div class="section-heading">
+                <h2>Quick Actions</h2>
+            </div>
+
+
+            <div class="quick-grid">
+
+                <button onclick="showSection('students')"
+                        class="action-card">
+
+                    <span class="action-icon">
+                        👨‍🎓
+                    </span>
+
+                    <h3>Add Student</h3>
+
+                    <p>
+                        Register a new student
+                    </p>
+
+                </button>
+
+
+                <button onclick="showSection('attendance')"
+                        class="action-card">
+
+                    <span class="action-icon">
+                        📷
+                    </span>
+
+                    <h3>Mark Attendance</h3>
+
+                    <p>
+                        Use camera or student ID
+                    </p>
+
+                </button>
+
+
+                <button onclick="showSection('reports')"
+                        class="action-card">
+
+                    <span class="action-icon">
+                        📊
+                    </span>
+
+                    <h3>View Reports</h3>
+
+                    <p>
+                        Check attendance records
+                    </p>
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- STUDENTS -->
+        <section id="students" class="section hidden">
+
+            <div class="page-title">
+
+                <div>
+
+                    <h1>Student Management</h1>
+
+                    <p>
+                        Register and manage students
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="content-grid">
+
+
+                <!-- ADD STUDENT -->
+                <div class="card">
+
+                    <h2>Add Student</h2>
+
+                    <form id="studentForm">
+
+                        <label>
+                            Student ID
+                        </label>
+
+                        <input
+                            type="text"
+                            id="studentId"
+                            placeholder="STU001"
+                            required
+                        >
+
+
+                        <label>
+                            Student Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="studentName"
+                            placeholder="Enter full name"
+                            required
+                        >
+
+
+                        <label>
+                            Email
+                        </label>
+
+                        <input
+                            type="email"
+                            id="studentEmail"
+                            placeholder="student@email.com"
+                        >
+
+
+                        <label>
+                            Department
+                        </label>
+
+                        <input
+                            type="text"
+                            id="studentDepartment"
+                            placeholder="Computer Science"
+                        >
+
+                        <label>
+                            Student Photo
+                        </label>
+
+                        <input
+                            type="file"
+                            id="studentPhoto"
+                            accept="image/*"
+                            capture="user"
+                            required
+                        >
+
+                        <p class="photo-help">
+                            Upload a clear front-facing photo with one face.
+                        </p>
+
+                        <div id="photoPreview" class="photo-preview hidden">
+                            <img id="studentPhotoPreview" alt="Student photo preview">
+                        </div>
+
+                        <button
+                            type="submit"
+                            class="btn primary"
+                        >
+                            Add Student
+                        </button>
+
+                    </form>
+
+
+                    <div id="studentMessage"
+                         class="message">
+                    </div>
+
+                </div>
+
+
+                <!-- STUDENT LIST -->
+                <div class="card">
+
+                    <div class="card-header">
+
+                        <h2>Students</h2>
+
+                        <input
+                            type="text"
+                            id="studentSearch"
+                            placeholder="Search..."
+                            oninput="displayStudents()"
+                        >
+
+                    </div>
+
+
+                    <div class="table-container">
+
+                        <table>
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Department</th>
+                                    <th>Action</th>
+
+                                </tr>
+
+                            </thead>
+
+                            <tbody id="studentTable">
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ATTENDANCE -->
+        <section id="attendance" class="section hidden">
+
+            <div class="page-title">
+
+                <div>
+
+                    <h1>Mark Attendance</h1>
+
+                    <p>
+                        Record student attendance
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="content-grid">
+
+
+                <!-- MANUAL ATTENDANCE -->
+                <div class="card">
+
+                    <h2>Manual Attendance</h2>
+
+                    <p class="description">
+                        Enter the registered student ID.
+                    </p>
+
+
+                    <input
+                        type="text"
+                        id="attendanceStudentId"
+                        placeholder="Student ID"
+                    >
+
+
+                    <button
+                        onclick="markManualAttendance()"
+                        class="btn primary full"
+                    >
+                        ✓ Mark Present
+                    </button>
+
+
+                    <div
+                        id="attendanceMessage"
+                        class="message">
+                    </div>
+
+                </div>
+
+
+                <!-- CAMERA -->
+                <div class="card">
+
+                    <h2>Camera</h2>
+
+                    <p class="description">
+                        Camera preview for attendance.
+                    </p>
+
+
+                    <div class="camera">
+
+                        <video
+                            id="camera"
+                            autoplay
+                            playsinline>
+                        </video>
+
+                        <div class="camera-overlay">
+                            Position face here
+                        </div>
+
+                    </div>
+
+
+                    <button
+                        onclick="startCamera()"
+                        class="btn primary"
+                    >
+                        Start Camera
+                    </button>
+
+
+                    <button
+                        onclick="stopCamera()"
+                        class="btn secondary"
+                    >
+                        Stop Camera
+                    </button>
+
+                    <div id="faceRecognitionStatus" class="recognition-status">
+                        Face recognition is not started.
+                    </div>
+
+                    <p class="camera-note">
+                        Registered student photos are compared with the live camera.
+                        When a confident match is found, attendance is marked automatically.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- TODAY'S ATTENDANCE -->
+            <div class="card attendance-table-card">
+
+                <div class="card-header">
+
+                    <h2>Today's Attendance</h2>
+
+                    <span id="todayDate"></span>
+
+                </div>
+
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Student ID</th>
+                                <th>Name</th>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Status</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="todayAttendanceTable">
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- REPORTS -->
+        <section id="reports" class="section hidden">
+
+            <div class="page-title">
+
+                <div>
+
+                    <h1>Attendance Reports</h1>
+
+                    <p>
+                        View complete attendance history
+                    </p>
+
+                </div>
+
+                <button
+                    onclick="exportCSV()"
+                    class="btn primary"
+                >
+                    Export CSV
+                </button>
+
+            </div>
+
+
+            <!-- REPORT SUMMARY -->
+            <div class="stats-grid">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon blue">
+                        📋
+                    </div>
+
+                    <div>
+
+                        <p>Total Records</p>
+
+                        <h2 id="totalRecords">
+                            0
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon green">
+                        ✓
+                    </div>
+
+                    <div>
+
+                        <p>Present Records</p>
+
+                        <h2 id="presentRecords">
+                            0
+                        </h2>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-header">
+
+                    <h2>Attendance History</h2>
+
+                    <input
+                        type="date"
+                        id="reportDate"
+                        onchange="displayReports()"
+                    >
+
+                </div>
+
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Student ID</th>
+                                <th>Name</th>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Status</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="reportTable">
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+        </div>
+
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@vladmandic/face-api/dist/face-api.js"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>
